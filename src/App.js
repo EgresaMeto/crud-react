@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Navbar from './components/Navbar'
+import Users from './components/features/Users'
+import Books from './components/features/Books'
+import Cars from './components/features/Cars'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+ 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <BrowserRouter>
+        <div className='App'>
+          <Navbar />
+          <ToastContainer position='top-center' />
+          <Routes>
+            <Route exact path='/' element={<Users />} />
+            <Route path='/books' element={<Books />} />
+            <Route path='/cars' element={<Cars />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App;
